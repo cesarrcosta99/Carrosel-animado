@@ -1,0 +1,239 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-family: "Poppins", sans-serif;
+}
+
+body {
+    background-color: #000;
+    color: #eee;
+    font-size: 12px;
+}
+
+.header {
+    width: 80%;
+    height: 50px;
+    margin: auto;
+    margin-top: 15px;
+    position: relative;
+    z-index: 1;
+}
+
+.header a {
+    color: #eee;
+    margin-right: 25px;
+    font-weight: 300;
+}
+
+.header a:hover {
+    text-decoration: underline;
+    opacity: 0.8;
+}
+
+.main {
+    height: 100vh;
+    width: 100vw;
+    margin-top: -65px;
+}
+
+.main .list .list-items {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    overflow: hidden;
+}
+
+.main .list .list-items img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    filter: brightness(50%);
+}
+
+.main .list .list-items .content {
+    position: absolute;
+    top: 20%;
+    left: 9.5%;
+    padding-right: 30%;
+    width: 80%;
+    color: #eee;
+    text-shadow: 0 5px 10px #0004;
+}
+
+.main .list .list-items .content h1 {
+    font-size: 5em;
+    font-weight: 700;
+    line-height: 1.3em;
+}
+
+.main .list .list-items .content p {
+    font-size: 1.2em;
+}
+
+.main .list .list-items .content .buttom-items {
+    display: grid;
+    grid-template-columns: repeat(2, 130px);
+    grid-template-rows: 40px;
+    margin-top: 20px;
+    gap: 10px;
+}
+
+.main .list .list-items .content .buttom-items button {
+    border: none;
+    background-color: #eee;
+    letter-spacing: 3px;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.main .list .list-items .content .buttom-items button:nth-child(2) {
+    background-color: transparent;
+    border: 1px solid #eee;
+    color: #eee;
+}
+
+.main .list .list-items .content .buttom-items button:nth-child(1):hover {
+    background-color: transparent;
+    border: 1px solid #eee;
+    color: #eee;
+    transition: .7s;
+}
+
+.main .list .list-items .content .buttom-items button:nth-child(2):hover {
+    background-color: #eee;
+    border: none;
+    color: #000;
+    transition: .7s;
+}
+
+.thumb {
+    display: flex;
+    position: absolute;
+    bottom: 50px;
+    left: 50%;
+    gap: 20px;
+}
+
+.thumb img {
+    width: 135px;
+    height: 200px;
+    border-radius: 10px;
+    object-fit: cover;
+    filter: brightness(80%);
+}
+
+.arrows {
+    display: flex;
+    gap: 10px;
+    position: absolute;
+    bottom: 120px;
+    left: 120px;
+    width: 300px;
+}
+
+.arrows button {
+    border-radius: 10px;
+    border: none;
+    padding: 12px 17px;
+    background-color: #eee4;
+    color: #eee;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 1.5em;
+}
+
+.arrows button:hover {
+    background-color: #eee;
+    color: black;
+    transition: .7s;
+}
+
+.main.next .thumb {
+    animation: effectNextThumb 0.5s linear 1 forwards;
+    z-index: 3;
+}
+
+@keyframes effectNextThumb {
+    from {
+        transform: translateX(75px);
+    }
+}
+
+.main.next .thumb img:nth-last-child(1) {
+    animation: effectLastThumb 0.5s linear 1 forwards;
+}
+
+@keyframes effectLastThumb {
+    from {
+        width: 0;
+        opacity: 0;
+    }
+}
+
+.main .list-items:nth-last-child(1) .content h1,
+.main .list-items:nth-last-child(1) .content p,
+.main .list-items:nth-last-child(1) .content .buttom-items {
+    transform: translateY(15px);
+    opacity: 0;
+    animation: appearContent 0.5s linear 1s 1 forwards;
+}
+
+@keyframes appearContent {
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.main .list-items:nth-last-child(1) .content h1 {
+    animation-delay: 0.3s;
+}
+
+.main .list-items:nth-last-child(1) .content p {
+    animation-delay: 0.6s;
+}
+
+.main .list-items:nth-last-child(1) .content .buttom-items {
+    animation-delay: 1.2s;
+}
+
+.main.next .list .list-items:nth-last-child(1) img {
+    width: 135px;
+    height: 200px;
+    border-radius: 10px;
+    position: absolute;
+    bottom: 50px;
+    left: 50%;
+   animation: showMainImage 0.8s linear 1 forwards; 
+} 
+
+@keyframes showMainImage {
+    to {
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border-radius: 0;
+    }
+}
+
+
+.main.back .list .list-items:nth-child(1) img{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    animation:hideMainImage 0.5s linear 1 forwards ;
+    z-index: 2;
+}
+
+@keyframes hideMainImage {
+    to{
+        width: 135px;
+        height: 200px;
+        border-radius: 10px;
+        bottom: 50px;
+        left: 50%;
+    }
+}
